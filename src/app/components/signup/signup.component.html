@@ -1,0 +1,44 @@
+<div class="form-container">
+    <div class="form-group">
+        <h1>Sign-up</h1>
+        <form class="form">
+            <label for="name">Name</label>
+            <input 
+                type="text" 
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="model.name" 
+                required 
+                >
+            <label for="email">E-mail</label>
+            <input 
+                type="email" 
+                name="email" 
+                #email="ngModel"
+                [(ngModel)]="model.email"
+                required 
+                >
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                name="password"
+                [(ngModel)]="model.password" 
+                #password="ngModel"
+                required 
+                >
+            <label for="confirm-password">Confirm Password</label>
+            <input 
+                type="password" 
+                name="pwConfirm"
+                required 
+                >
+        </form>
+        <button 
+            *ngIf="(!name.invalid && !email.invalid && !password.invalid)" class='disabled' 
+            type="submit" 
+            (click)="onSubmit()" 
+            class="submit-btn"
+            >Submit
+        </button>
+    </div>
+</div>
