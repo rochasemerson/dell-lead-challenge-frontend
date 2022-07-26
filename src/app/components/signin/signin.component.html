@@ -1,1 +1,27 @@
-<p>signin works!</p>
+<div class="form-container">
+    <div class="form-group">
+        <h1>Sign-in</h1>
+        <form class="form">
+            <label for="email">E-mail</label>
+            <input 
+                type="email" 
+                name="email" 
+                [(ngModel)]="model.email"
+                required 
+                >
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                name="password"
+                [(ngModel)]="model.password"
+                required 
+                >
+        </form>
+        <button 
+            type="submit" 
+            class="submit-btn"
+            (click)="signIn()"
+            >Login
+        </button>
+    </div>
+</div>

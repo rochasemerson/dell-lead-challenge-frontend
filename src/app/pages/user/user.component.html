@@ -1,0 +1,20 @@
+<div class="user-container">
+    <div class="user-info">
+        <span>{{user.name}}</span>
+        <span>{{user.email}}</span>
+    </div>
+    <form class="form" #UserForm="ngForm">
+        <label for="name">Name</label>
+        <input type="text">
+        <label for="email">E-mail</label>
+        <input type="text">
+    </form>
+    <div class="wrapper">
+        <div class="icon edit">
+            <div class="tooltip">Edit</div>
+        </div>
+        <div class="icon delete">
+            <div class="tooltip">Delete</div>
+        </div>
+    </div>
+</div>

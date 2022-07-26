@@ -19,10 +19,16 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  model = new Signup('', '', '', '')
+  model = new Signup('', '', '', '', '')
 
-  onSubmit() {
-    this.userService.signUp(this.model).subscribe()
-    this.route.navigate(['/signin'])
+  async onSubmit() {
+    if (this.model.password !== this.model.pwConfirm) return alert('Passwords do not match')
+    await this.userService.signUp(this.model).subscribe(
+      (resp: any) => {
+        const currentUser = JSON.stringify(resp)
+        localStorage.setItem('currentUser', currentUser)
+      }
+    )
+    this.route.navigate(['/'])
   }
 }

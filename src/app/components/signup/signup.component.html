@@ -1,12 +1,11 @@
 <div class="form-container">
     <div class="form-group">
         <h1>Sign-up</h1>
-        <form class="form">
+        <form class="form" #signUpForm="ngForm">
             <label for="name">Name</label>
             <input 
                 type="text" 
                 name="name"
-                #name="ngModel"
                 [(ngModel)]="model.name" 
                 required 
                 >
@@ -14,7 +13,6 @@
             <input 
                 type="email" 
                 name="email" 
-                #email="ngModel"
                 [(ngModel)]="model.email"
                 required 
                 >
@@ -23,22 +21,22 @@
                 type="password" 
                 name="password"
                 [(ngModel)]="model.password" 
-                #password="ngModel"
                 required 
                 >
             <label for="confirm-password">Confirm Password</label>
             <input 
                 type="password" 
                 name="pwConfirm"
+                [(ngModel)]="model.pwConfirm"
                 required 
                 >
         </form>
-        <button 
-            *ngIf="(!name.invalid && !email.invalid && !password.invalid)" class='disabled' 
-            type="submit" 
-            (click)="onSubmit()" 
-            class="submit-btn"
-            >Submit
-        </button>
-    </div>
+        <button
+        type="submit" 
+        (click)="onSubmit()" 
+        class="submit-btn"
+        [class.disabled]=signUpForm.invalid
+        >Submit
+    </button>
+</div>
 </div>

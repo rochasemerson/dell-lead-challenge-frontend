@@ -1,0 +1,36 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 100%;
+    padding: var(--size-2);
+    background-color: var(--orange-7);
+}
+
+.navbar-container a {
+    text-decoration: none;
+    color: var(--gray-4);
+    font-size: var(--font-size-4);
+    margin: 0 var(--size-4);
+}
+
+.userName {
+    font-size: var(--font-size-4);
+    margin-right: var(--size-4);
+}
+
+.logout-btn {
+    cursor: pointer;
+    align-self: flex-end;
+    padding: var(--size-2);
+
+    background-color: var(--red-9);
+    color: var(--gray-4);
+    outline: none;
+    border: none;
+}
+
+.logout-btn:hover,
+.logout-btn:focus {
+    background-color: var(--red-6);
+}

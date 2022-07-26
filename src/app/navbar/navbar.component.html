@@ -1,0 +1,10 @@
+<div class="navbar-container">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/">Products</a>
+    </nav>
+    <div>
+        <span class="userName" *ngIf="user">Welcome <a [routerLink]="route">{{user.name}}</a></span>
+        <button class="logout-btn">Logout</button>
+    </div>
+</div>

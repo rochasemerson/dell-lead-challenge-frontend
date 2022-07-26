@@ -48,3 +48,8 @@
 .submit-btn:focus {
     background-color: var(--green-6);
 }
+
+.disabled {
+    background-color: var(--gray-6);
+    pointer-events: none;
+}
