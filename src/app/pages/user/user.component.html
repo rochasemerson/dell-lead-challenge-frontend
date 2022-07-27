@@ -1,20 +1,31 @@
+<navbar></navbar>
 <div class="user-container">
     <div class="user-info">
         <span>{{user.name}}</span>
         <span>{{user.email}}</span>
     </div>
-    <form class="form" #UserForm="ngForm">
+    <form *ngIf="mode === 'edit'" class="form" #UserForm="ngForm">
         <label for="name">Name</label>
-        <input type="text">
+        <input type="text" [(ngModel)]="editUserBody.name" name="name">
         <label for="email">E-mail</label>
-        <input type="text">
+        <input type="email" [(ngModel)]="editUserBody.email" name="email">
+    </form>
+    <form *ngIf="mode === 'delete'" class="form" #UserForm="ngForm">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="user.name" name="name">
+        <label for="email">E-mail</label>
+        <input type="email" [(ngModel)]="user.email" name="email">
     </form>
     <div class="wrapper">
-        <div class="icon edit">
+        <div (click)="editMode()" class="icon edit">
+            E
             <div class="tooltip">Edit</div>
         </div>
-        <div class="icon delete">
+        <div (click)="deleteMode()" class="icon delete">
+            D
             <div class="tooltip">Delete</div>
         </div>
+        <button (click)="editUser()" *ngIf="mode === 'edit'" class="edit-btn">Edit</button>
+        <button (click)="deleteUser()" *ngIf="mode === 'delete'" class="delete-btn">Delete</button>
     </div>
 </div>

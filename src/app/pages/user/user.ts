@@ -3,3 +3,8 @@ export type userType = {
     name: string,
     email: string,
   }
+
+  export type editUserType = {
+    name: string,
+    email: string,
+  }

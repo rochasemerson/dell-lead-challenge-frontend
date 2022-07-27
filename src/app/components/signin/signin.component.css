@@ -1,8 +1,7 @@
 .form-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    margin-block: 25%;
 }
 
 .form-group {

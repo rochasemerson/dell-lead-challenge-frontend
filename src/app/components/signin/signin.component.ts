@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from "@angular/router";
+
 import { Signin } from './signin';
 
 @Component({
@@ -9,19 +11,23 @@ import { Signin } from './signin';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private route: Router
+    ) { }
 
   ngOnInit(): void {
   }
 
   model = new Signin('', '')
 
-  signIn() {
-    this.userService.signIn(this.model)
-      .subscribe((resp) => {
-        console.log(resp);
-        
-      })
-
+  async signIn() {
+    await this.userService.signIn(this.model).subscribe(
+      (resp: any) => {
+        const currentUser = JSON.stringify(resp)
+        localStorage.setItem('currentUser', currentUser)
+      }
+    )
+    this.route.navigate(['/'])
   }
 }
