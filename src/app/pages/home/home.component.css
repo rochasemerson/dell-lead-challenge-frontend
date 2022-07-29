@@ -1,0 +1,11 @@
+.home-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 10% 1fr 1fr);
+    max-height: 100vh;
+}
+
+.home-container > nav {
+    grid-column: span 3;
+    height: fit-content;
+}

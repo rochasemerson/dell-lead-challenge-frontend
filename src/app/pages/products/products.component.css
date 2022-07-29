@@ -1,0 +1,32 @@
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    max-height: 100vh;
+}
+
+.products-container > nav {
+    grid-column: span 3;
+    height: fit-content;
+}
+
+.load-btn {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+}
+
+.load-btn > button {
+    cursor: pointer;
+    width: 15vw;
+    height: var(--size-5);
+    margin: var(--size-3);
+    border: none;
+    border-radius: var(--size-2);
+    background-color: var(--indigo-9);
+    box-shadow: var(--shadow-4);
+}
+
+.load-btn > button:hover {
+    background-color: var(--indigo-6);
+}

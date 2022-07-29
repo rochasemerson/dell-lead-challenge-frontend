@@ -1,0 +1,9 @@
+<navbar></navbar>
+<div class="products-container">
+    <div *ngFor="let product of productList">
+        <product-card [productInfo]="product"></product-card>
+    </div>
+    <div class="load-btn">
+        <button>Load More</button>
+    </div>
+</div>

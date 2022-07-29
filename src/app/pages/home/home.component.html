@@ -2,5 +2,7 @@
     <nav>
         <navbar></navbar>
     </nav>
-    <app-content></app-content>
+    <div *ngFor="let product of productList">
+        <product-card [productInfo]="product"></product-card>
+    </div>
 </div>
