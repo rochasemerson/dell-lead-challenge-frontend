@@ -1,0 +1,98 @@
+<div class="product-form-container">
+    <form class="productsForm" #productsForm="ngForm">
+        <input
+            placeholder="Product name..."
+            type="text"
+            required
+            name="name"
+            [(ngModel)]="newProduct.name"
+            [readonly]="mode === 'delete'"
+         >
+        <input 
+            placeholder="Product price..."
+            type="number"
+            required
+            name="price"
+            [(ngModel)]="newProduct.price"
+            [readonly]="mode === 'delete'"
+            >
+        <input 
+            placeholder="Product description..."
+            type="text"
+            required
+            name="description"
+            [(ngModel)]="newProduct.description"
+            [readonly]="mode === 'delete'"
+            >
+        <input 
+            placeholder="Image Url..."
+            type="text"
+            name="imgUrl"
+            [(ngModel)]="newProduct.imgUrl"
+            [readonly]="mode === 'delete'"
+            >
+    </form>
+    <button 
+        type="submit"
+        (click)="createProduct()" 
+        *ngIf="mode === 'create'" 
+        class="create-btn"
+        [class.disabled]=productsForm.invalid
+        >
+        Create
+    </button>
+    <button 
+        type="submit"
+        (click)="editProduct()" 
+        *ngIf="mode === 'edit'" 
+        class="edit-btn"
+        >
+        Edit
+    </button>
+    <button 
+        type="submit"
+        (click)="deleteProduct()" 
+        *ngIf="mode === 'delete'" 
+        class="delete-btn"
+        >
+        Delete
+    </button>
+    <table class="product-list-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productList">
+                <td>
+                    {{product.id}}
+                </td>
+                <td>
+                    {{product.name}}
+                </td>
+                <td>
+                    {{product.price | currency}}
+                </td>
+                <td>
+                    {{product.description}}
+                </td>
+                <td>
+                    <div class="wrapper">
+                        <div (click)="loadProduct(product, 'edit')" class="edit icon">
+                            E
+                          <div class="tooltip">Editar</div>
+                        </div>
+                        <div (click)="loadProduct(product, 'delete')" class="delete icon">
+                            D
+                          <div class="tooltip">Deletar</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

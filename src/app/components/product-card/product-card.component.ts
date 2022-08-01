@@ -13,5 +13,5 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  imgUrl = 'https://pbs.twimg.com/media/EUbVCOaXQAAWTXv.jpg'
+  imgUrl = 'assets/dross.png'
 }

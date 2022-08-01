@@ -24,6 +24,8 @@ export class SigninComponent implements OnInit {
   async signIn() {
     await this.userService.signIn(this.model).subscribe(
       (resp: any) => {
+        console.log(resp);
+        
         const currentUser = JSON.stringify(resp)
         localStorage.setItem('currentUser', currentUser)
       }

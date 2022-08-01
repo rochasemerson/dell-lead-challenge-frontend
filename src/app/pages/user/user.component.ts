@@ -21,6 +21,8 @@ export class UserComponent implements OnInit {
   }
 
   mode: string = ''
+  token: any = localStorage.getItem('currentUser')
+  user_token = JSON.parse(this.token)
 
   constructor(private userService: UserService, private route: Router) { }
 
@@ -28,8 +30,6 @@ export class UserComponent implements OnInit {
     this.getUser()
   }
 
-  token: any = localStorage.getItem('currentUser')
-  user_token = JSON.parse(this.token)
 
   getUser() {
     if (this.user_token) {

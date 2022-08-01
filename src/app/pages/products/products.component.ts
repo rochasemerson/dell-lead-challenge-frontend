@@ -17,10 +17,24 @@ export class ProductsComponent implements OnInit {
 
   productList: Array<ProductType> = []
   page: number = 1
-  limit: number = 6
+  limit: number = 3
+  filter: string = ''
 
   getProducts() {
     return this.productService.getProducts(this.page, this.limit).subscribe(
+      (resp: any) => {
+        this.productList = resp
+      }
+    )
+  }
+
+  loadMore() {
+    this.limit += 3
+    this.getProducts()    
+  }
+
+  productFilter() {
+    return this.productService.filterProducts(this.filter).subscribe(
       (resp: any) => {
         this.productList = resp
       }
