@@ -3,6 +3,8 @@
         <navbar></navbar>
     </nav>
     <div *ngFor="let product of productList">
-        <product-card [productInfo]="product"></product-card>
+        <a [routerLink]="['/product', product.id]">
+            <product-card [productInfo]="product"></product-card>
+        </a>
     </div>
 </div>

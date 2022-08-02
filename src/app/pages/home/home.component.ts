@@ -10,7 +10,8 @@ import { ProductType } from '../products/product';
 export class HomeComponent implements OnInit {
   productList: Array<ProductType> = []
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts()

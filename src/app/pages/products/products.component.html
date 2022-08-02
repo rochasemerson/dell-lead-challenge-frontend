@@ -5,7 +5,9 @@
         <button (click)="productFilter()" class="search-btn">Search</button>
     </div>
     <div *ngFor="let product of productList">
-        <product-card [productInfo]="product"></product-card>
+        <a [routerLink]="['/product', product.id]">
+            <product-card [productInfo]="product"></product-card>
+        </a>
     </div>
     <div class="load-btn">
         <button (click)="loadMore()">Load More</button>

@@ -16,6 +16,11 @@ export class ProductService {
     return req
   }
 
+  getProduct(id: string): Observable<Object> {
+    const req= this.http.get(`${this.baseUrl}/products/search/${id}`)
+    return req
+  }
+
   filterProducts(filter: string): Observable<Object> {
     const req = this.http.get(`${this.baseUrl}/products/filter/${filter}`)
     return req

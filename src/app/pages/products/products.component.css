@@ -55,3 +55,8 @@
 .search-btn:hover {
     background-color: var(--indigo-6);
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
