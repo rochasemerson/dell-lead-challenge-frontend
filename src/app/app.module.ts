@@ -17,6 +17,7 @@ import { ProductService } from './services/product/product.service';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductComponent } from './pages/product/product.component';
+import { NpsService } from './services/nps/nps.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ProductComponent } from './pages/product/product.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, ProductService],
+  providers: [UserService, ProductService, NpsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

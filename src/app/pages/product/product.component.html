@@ -7,8 +7,37 @@
     </section>
     <section class="cart-info">
         <h1>{{productInfo.name}}</h1>
+        <h2 [ngStyle]="{'color': productScore > 80 ? 'green' : productScore < 70 ? 'red' : 'white'}">
+            {{productScore}}
+        </h2>
         <span>{{productInfo.price | currency}}</span>
         <button>Buy</button>
+        <div *ngIf="user.id !== ''" class="nps">
+            <span *ngIf="userScore == 0">Rate the product:</span>
+            <div *ngIf="userScore == 0">
+                <input 
+                type="range" 
+                name="nps" 
+                id="nps"
+                min="1"
+                max="10"
+                ngModel="npsValue"
+                #nps="ngModel"
+                >
+                <span class="npsValue" *ngIf="nps.value !== 'npsValue'">{{nps.value}}</span>
+                <img *ngIf="nps.value < 7" src="assets/detractor.svg" alt="">
+                <img *ngIf="nps.value === 7 || nps.value === 8" src="assets/neutral.svg" alt="">
+                <img *ngIf="nps.value > 8" src="assets/promoter.svg" alt="">
+            </div>
+            <button *ngIf="userScore == 0" type="submit">Vote</button>
+            <button *ngIf="userScore > 0" type="submit">Edit</button>
+            <div 
+                *ngIf="userScore > 0" 
+                class="user-score"
+                [ngStyle]="{'color': userScore > 8 ? 'green' : userScore < 7 ? 'red' : 'white'}"
+                >{{userScore}}
+            </div>
+        </div>
     </section>
     <section class="product-info">
         <p>{{productInfo.description}}</p>

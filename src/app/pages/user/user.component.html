@@ -1,8 +1,9 @@
 <navbar></navbar>
 <div class="user-container">
     <div class="user-info">
-        <span>{{user.name}}</span>
-        <span>{{user.email}}</span>
+        <span>ID: {{user.id}}</span>
+        <span>Name: {{user.name}}</span>
+        <span>E-mail: {{user.email}}</span>
     </div>
     <form *ngIf="mode === 'edit'" class="form" #UserForm="ngForm">
         <label for="name">Name</label>
@@ -18,11 +19,11 @@
     </form>
     <div class="wrapper">
         <div (click)="editMode()" class="icon edit">
-            E
+            <img src="assets/edit.svg" alt="">
             <div class="tooltip">Edit</div>
         </div>
         <div (click)="deleteMode()" class="icon delete">
-            D
+            <img src="assets/trash.svg" alt="">
             <div class="tooltip">Delete</div>
         </div>
         <button (click)="editUser()" *ngIf="mode === 'edit'" class="edit-btn">Edit</button>

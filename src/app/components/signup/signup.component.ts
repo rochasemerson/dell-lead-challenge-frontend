@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
     await this.userService.signUp(this.model).subscribe(
       (resp: any) => {
         const currentUser = JSON.stringify(resp)
+        localStorage.clear()
         localStorage.setItem('currentUser', currentUser)
       }
     )

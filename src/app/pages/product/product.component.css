@@ -27,17 +27,26 @@
     padding: var(--size-5);
     gap: var(--size-5);
     border-bottom: 2px solid var(--gray-6);
-}
-
-.cart-info > h1 {
-    font-size: var(--font-size-fluid-2);
+    position: relative;
 }
 
 .cart-info > span {
     font-size: var(--font-size-fluid-1);
 }
 
-.cart-info > button {
+.cart-info > h2 {
+    font-size: var(--font-size-fluid-2);
+    border: 2px dotted blue;
+    padding: var(--size-2);
+    border-radius: 50%;
+
+    position: absolute;
+    top: var(--size-2);
+    right: var(--size-2);
+}
+
+.cart-info > button,
+.nps > button  {
     cursor: pointer;
     width: var(--size-10);
     padding: var(--size-2);
@@ -47,8 +56,42 @@
     box-shadow: var(--shadow-4);
 }
 
-.cart-info > button:hover {
+.cart-info > button:hover,
+.nps > button:hover  {
     background-color: var(--indigo-7);
+}
+
+.cart-info > h1 {
+    font-size: var(--font-size-fluid-2);
+}
+
+.nps {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: var(--font-size-fluid-1);
+    gap: var(--size-2);
+}
+
+.npsValue {
+    font-size: var(--font-size-fluid-);
+    margin-left: var(--size-2);
+}
+
+.nps > img {
+    width: var(--size-8);
+}
+
+
+.user-score {
+    font-size: var(--font-size-fluid-2);
+    font-weight: bolder;
+    text-align: center;
+    border: 2px dotted blue;
+    width: var(--size-9);
+    padding: var(--size-2);
+    border-radius: 50%;
+    margin-left: var(--size-2);
 }
 
 .product-info {
