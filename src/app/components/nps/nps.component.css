@@ -1,0 +1,50 @@
+.nps-container {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-fluid-1);
+    gap: var(--size-2);
+
+    position: absolute;
+    bottom: var(--size-2);
+    right: var(--size-2);
+}
+
+.nps-input {
+    display: flex;
+    gap: var(--size-2);
+    position: relative;
+}
+
+.nps-input > img {
+    width: var(--size-6);
+    cursor: pointer;
+}
+
+.nps-input > img:hover {
+    transform: scale(125%);
+}
+
+.user-score {
+    font-size: var(--font-size-fluid-2);
+    font-weight: bolder;
+    text-align: center;
+    border: 2px dotted blue;
+    width: var(--size-9);
+    padding: var(--size-2);
+    border-radius: 50%;
+    margin-left: var(--size-2);
+    position: relative;
+    cursor: pointer;
+}
+
+.user-score::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    font-size: 1rem;
+    transform: translate(-125%, -125%);
+    display: none;
+}
+
+.user-score:hover::after {
+    display: block;
+}

@@ -10,8 +10,29 @@ export class NpsService {
 
   constructor(private http: HttpClient) { }
 
-  getScore(userId: string, productId: string): Observable<Object> {
-    const req = this.http.get(`${this.baseUrl}/nps/${userId}&${productId}`)
+  newScore(productId: string, user_token: any, score: number): Observable<Object> {
+    const req = this.http.post(`${this.baseUrl}/nps/new`,
+      {
+        productId,
+        score
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${user_token.acess_token}`
+        }
+      }
+    )
+    return req
+  }
+
+  getScore(productId: string, user_token: any): Observable<Object> {
+    const req = this.http.get(`${this.baseUrl}/nps/${productId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user_token.acess_token}`
+        }
+      }
+    )
     return req
   }
 }

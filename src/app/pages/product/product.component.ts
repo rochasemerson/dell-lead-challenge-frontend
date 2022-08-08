@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { NpsService } from 'src/app/services/nps/nps.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { ProductService } from 'src/app/services/product/product.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ProductType } from '../products/product';
@@ -12,65 +12,44 @@ import { userType } from '../user/user';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  productInfo: ProductType = {
-    id: '',
-    name: '',
-    price: '',
-    description: '',
-    imgUrl: ''
-  }
-  user: userType = {
-    id: '',
-    name: '',
-    email: ''
-  }
+  productInfo!: ProductType;
+  user?: userType
   productId: any = this.route.snapshot.params
-  userScore: number = 0
   productScore: number = 88
+  token: any = localStorage.getItem('currentUser')
+  user_token = JSON.parse(this.token)
+  render = false
 
   constructor(
     private productService: ProductService,
     private userService: UserService,
-    private npsService: NpsService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getProduct()
     this.getUser()
-    setTimeout(() => {
-      this.getScore()
-    }, 500);
   }
 
   getProduct() {
     return this.productService.getProduct(this.productId.id).subscribe(
       (resp: any) => {
         this.productInfo = resp
+        this.render = true
+
       }
     )
   }
 
   getUser() {
-    const token: any = localStorage.getItem('currentUser')
-    const user_token = JSON.parse(token)
-
-    if (token) {
-      return this.userService.getUser(user_token.acess_token).subscribe(
+    if (this.token) {
+      return this.userService.getUser(this.user_token.acess_token).subscribe(
         (resp: any) => {
           this.user = resp
+          this.render = true
         }
       )
     } else return
   }
 
-  getScore() {
-    if (this.user.id != '') {
-      this.npsService.getScore(this.user.id, this.productId.id).subscribe(
-        (resp: any) => {
-          this.userScore = resp
-        }
-      )
-    } else return
-  }
 }

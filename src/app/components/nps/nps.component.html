@@ -1,0 +1,16 @@
+<div class="nps-container">
+    <span *ngIf="user && !userScore">Rate the product!</span>
+    <div 
+        *ngFor="let score of scores, index as i"
+        class="nps-input">
+        <img src="assets/{{score}}.svg" alt="">
+        <div class="score-value">{{i + 1}}</div>
+    </div>
+    <div 
+    *ngIf="userScore"
+    class="user-score"
+    data-tooltip="Your rate!"
+    [ngStyle]="{'color': userScore > 8 ? 'green' : userScore < 7 ? 'red' : 'white'}"
+    >{{userScore}}
+</div>
+</div>

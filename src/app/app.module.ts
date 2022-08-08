@@ -18,6 +18,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductComponent } from './pages/product/product.component';
 import { NpsService } from './services/nps/nps.service';
+import { NpsComponent } from './components/nps/nps.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NpsService } from './services/nps/nps.service';
     ProductCardComponent,
     ProductsComponent,
     ProductFormComponent,
-    ProductComponent
+    ProductComponent,
+    NpsComponent
   ],
   imports: [
     BrowserModule,
