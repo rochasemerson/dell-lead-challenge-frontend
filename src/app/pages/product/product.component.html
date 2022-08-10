@@ -7,12 +7,15 @@
     </section>
     <section class="cart-info">
         <h1>{{productInfo?.name}}</h1>
-        <h2 [ngStyle]="{'color': productScore > 80 ? 'green' : productScore < 70 ? 'red' : 'white'}">
+        <h2 
+        data-tooltip="Product rating!"
+        [ngStyle]="{'color': productScore > 80 ? 'green' : productScore < 70 ? 'red' : 'white'}"
+        >
             {{productScore}}
         </h2>
         <span>{{productInfo?.price | currency}}</span>
         <button>Buy</button>
-        <nps *ngIf="render" [user]="user" [productId]="productId" [user_token]="user_token"></nps>
+        <nps (scoreEvent)="updateNps($event)" *ngIf="render" [user]="user" [productId]="productId" [user_token]="user_token"></nps>
     </section>
     <section class="product-info">
         <p>{{productInfo?.description}}</p>

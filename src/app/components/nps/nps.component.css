@@ -11,8 +11,10 @@
 
 .nps-input {
     display: flex;
-    gap: var(--size-2);
-    position: relative;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-1);
+    font-size: 0.5em;
 }
 
 .nps-input > img {
@@ -34,14 +36,14 @@
     border-radius: 50%;
     margin-left: var(--size-2);
     position: relative;
-    cursor: pointer;
+    cursor: help;
 }
 
 .user-score::after {
     position: absolute;
     content: attr(data-tooltip);
     font-size: 1rem;
-    transform: translate(-125%, -125%);
+    transform: translate(-15%, -300%);
     display: none;
 }
 

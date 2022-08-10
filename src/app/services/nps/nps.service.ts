@@ -10,7 +10,7 @@ export class NpsService {
 
   constructor(private http: HttpClient) { }
 
-  newScore(productId: string, user_token: any, score: number): Observable<Object> {
+  newScore(productId: string, score: number, user_token: any): Observable<Object> {
     const req = this.http.post(`${this.baseUrl}/nps/new`,
       {
         productId,
@@ -33,6 +33,23 @@ export class NpsService {
         }
       }
     )
+    return req
+  }
+
+  editScore(id: string, newScore: number, user_token: any): Observable<Object> {
+    const req = this.http.patch(`${this.baseUrl}/nps/edit/${id}`,
+      { score: newScore },
+      {
+        headers: {
+          Authorization: `Bearer ${user_token.acess_token}`
+        }
+      }
+    )
+    return req
+  }
+
+  getNps(productId: string): Observable<Object> {
+    const req = this.http.get(`${this.baseUrl}/nps/all/${productId}`)
     return req
   }
 }

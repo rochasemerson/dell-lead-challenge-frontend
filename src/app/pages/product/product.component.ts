@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { NpsService } from 'src/app/services/nps/nps.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ProductType } from '../products/product';
@@ -15,7 +16,7 @@ export class ProductComponent implements OnInit {
   productInfo!: ProductType;
   user?: userType
   productId: any = this.route.snapshot.params
-  productScore: number = 88
+  productScore!: number
   token: any = localStorage.getItem('currentUser')
   user_token = JSON.parse(this.token)
   render = false
@@ -23,12 +24,14 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private userService: UserService,
+    private npsService: NpsService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getProduct()
     this.getUser()
+    this.getNps()
   }
 
   getProduct() {
@@ -36,7 +39,6 @@ export class ProductComponent implements OnInit {
       (resp: any) => {
         this.productInfo = resp
         this.render = true
-
       }
     )
   }
@@ -52,4 +54,15 @@ export class ProductComponent implements OnInit {
     } else return
   }
 
+  getNps() {
+    this.npsService.getNps(this.productId).subscribe(
+      (resp: any) => {
+        this.productScore = resp
+      }
+    )
+  }
+
+  updateNps(e: any) {
+    this.getNps()
+  }
 }

@@ -28,7 +28,6 @@
     gap: var(--size-5);
     border-bottom: 2px solid var(--gray-6);
     position: relative;
-
 }
 
 .cart-info > span {
@@ -40,17 +39,30 @@
     border: 2px dotted blue;
     padding: var(--size-2);
     border-radius: 50%;
+    cursor: help;
 
     position: absolute;
     bottom: var(--size-2);
     left: var(--size-2);
 }
 
-.cart-info > button,
-.nps > button  {
+.cart-info > h2::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    font-size: 1rem;
+    transform: translate(0, -300%);
+    display: none;
+}
+
+.cart-info >h2:hover::after {
+    display: block;
+}
+
+.cart-info > button {
     cursor: pointer;
     width: var(--size-10);
     padding: var(--size-2);
+    margin-bottom: var(--size-4);
     background-color: var(--indigo-4);
     border: none;
     border-radius: var(--size-2);
